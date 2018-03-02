@@ -10,11 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180302002456) do
+ActiveRecord::Schema.define(version: 20180302003801) do
 
   create_table "access_data", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "input_file_id"
+    t.index ["input_file_id"], name: "index_access_data_on_input_file_id"
   end
 
   create_table "input_files", force: :cascade do |t|
