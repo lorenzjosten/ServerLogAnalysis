@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
-  resources :access_data
-  resources :input_files
+
+  get 'analysis/index'
+
+  resource :input_file, shallow: true do
+    resources :access_data
+  end
+
+  root 'analysis#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
