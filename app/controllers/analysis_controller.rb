@@ -8,13 +8,22 @@ class AnalysisController < ApplicationController
   end
 
   def set_timeframe
-    @t_start = timeframe_params[:t_start]
-    @t_end = timeframe_params[:t_end]
+    @t_start = parse_datetime(timeframe_params.permit(:t_start))
+    @t_end = parse_datetime(timeframe_params.permit(:t_end))
+    byebug
   end
 
   private
 
   def timeframe_params
     params.require(:timeframe).permit(:t_start, :t_end)
+  end
+
+  def parse_datetime(dt_hash)
+    format_values = Proc.new {|arr| arr.each_with_index{|val,i| arr[i]=val.rjust(2,'0')}}
+    datetime = Proc.new {|arr| DateTime.parse(arr[2]+arr[1]+arr[0]+'T'+arr[3]+arr[4])}
+
+    tmp = format_values.call(dt_hash.values)
+    datetime.call(tmp)
   end
 end
