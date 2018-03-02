@@ -1,0 +1,2 @@
+class AccessDataController < ApplicationController
+end
