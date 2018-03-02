@@ -1,4 +1,4 @@
-<%= form_with model: @input_file.access_data, action: set_timeframe do |form| %>
+<%= form_with model: [@input_file, @input_file.access_data], action: set_timeframe do |form| %>
   <%= form.datetime_select 'start_time_field' %>
   <%= form.datetime_select 'end_time_field' %>
   <%= form.submit 'Set Timeframe' %>
