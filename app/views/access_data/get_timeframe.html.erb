@@ -1,5 +1,5 @@
-<%= form_with model: [@input_file, @input_file.access_data.build], action: :set_timeframe, method: :put do |form| %>
-  <%= form.datetime_select 'start_time_field' %>
+<%= form_with scope: :timeframe, url: {controller: :analysis, action: :set_timeframe}, method: :put do |form| %>
+  <%= form.datetime_select 'start_time_field', options: {order: :default, diabled: true} %>
   <%= form.datetime_select 'end_time_field' %>
   <%= form.submit 'Set Timeframe' %>
 <% end %>

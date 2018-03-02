@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     resources :access_data
   end
 
-  match 'timeframe', to: 'access_data#set_timeframe', via: [:put]
+  match 'analysis#set_timeframe', to: 'analysis#set_timeframe', via: [:put]
 
   root 'analysis#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
