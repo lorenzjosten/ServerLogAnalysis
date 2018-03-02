@@ -1,5 +1,5 @@
 class InputFile < ApplicationRecord
-  input_file.instance_variable_set(:@route_key, 'input_file')
+  model_name.instance_variable_set(:@route_key, 'input_file')
 
   has_many :access_data
 
