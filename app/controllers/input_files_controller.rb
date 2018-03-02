@@ -1,8 +1,11 @@
 class InputFilesController < ApplicationController
+  include LogFileScanner
   before_action :destroy_old_file, only: [:create]
 
   def create
     @input_file = InputFile.new(input_file_params)
+    access_data = scan(@input_file.data)
+    @input_file.access_data.build(access_data)
     if @input_file.save
       redirect_to '/'
     end
