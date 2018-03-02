@@ -1,0 +1,2 @@
+class InputFile < ApplicationRecord
+end

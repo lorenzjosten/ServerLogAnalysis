@@ -1,0 +1,2 @@
+class InputFilesController < ApplicationController
+end
