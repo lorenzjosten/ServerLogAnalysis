@@ -1,14 +1,15 @@
 class InputFilesController < ApplicationController
+
   include LogFileScanner
-  before_action :destroy_old_file, only: [:create]
+  include CurrentInputFile
+
+  before_action :new_input_file, only: [:create]
 
   def create
-    @input_file = InputFile.new(input_file_params)
+    @input_file.update(input_file_params)
     access_data = scan(@input_file.data)
     @input_file.access_data.build(access_data)
-    if @input_file.save
-      redirect_to '/'
-    end
+    redirect_to '/' if @input_file.save
   end
 
   private
@@ -17,7 +18,4 @@ class InputFilesController < ApplicationController
     params.require(:input_file).permit(:uploaded_file)
   end
 
-  def destroy_old_file
-    InputFile.destroy_all
-  end
 end

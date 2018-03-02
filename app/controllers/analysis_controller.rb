@@ -1,26 +1,20 @@
 class AnalysisController < ApplicationController
 
-  before_action :set_input_file, only: [:index]
+  include CurrentInputFile
+
+  before_action :current_input_file, only: [:index, :set_timeframe]
 
   def index
   end
 
   def set_timeframe
-    @timeframe = timeframe_params
+    @t_start = timeframe_params[:t_start]
+    @t_end = timeframe_params[:t_end]
   end
 
   private
 
-  def set_input_file
-    begin
-      @input_file = InputFile.find(params[:input_file][:id])
-    rescue
-      @input_file = InputFile.new
-      @input_file.access_data.build
-    end
-  end
-
   def timeframe_params
-    params.require(:timeframe).permit(:start_time_field, :end_time_field)
+    params.require(:timeframe).permit(:t_start, :t_end)
   end
 end

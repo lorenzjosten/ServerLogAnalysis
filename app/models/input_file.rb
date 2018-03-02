@@ -8,4 +8,5 @@ class InputFile < ApplicationRecord
     self.content_type = file_field.content_type.chomp
     self.data = file_field.read
   end
+
 end
