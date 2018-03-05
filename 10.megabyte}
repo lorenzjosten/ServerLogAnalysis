@@ -1,2 +1,0 @@
-      invoke  active_record
-      create    db/migrate/20180302005912_add_attributes_to_input_file.rb

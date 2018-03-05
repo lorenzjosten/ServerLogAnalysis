@@ -13,7 +13,7 @@ module CurrentInputFile
     begin
       @input_file = InputFile.find(session[:input_file_id])
     rescue ActiveRecord::RecordNotFound
-      @input_file = nil
+      new_input_file
     end
   end
 end
