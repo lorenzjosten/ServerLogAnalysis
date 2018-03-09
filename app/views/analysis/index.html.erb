@@ -1,2 +1,85 @@
-<%= render template: 'input_files/get.html.erb' %>
-<%= render template: 'analysis/get_timeframe.html.erb' %>
+<%= content_tag :div, class: "graph_data_class", data: {
+  sitevisits: @site_visits,
+  urlvisits: @url_visits,
+  serverresponse: @server_response } do %>
+<% end %>
+
+<%= content_for :plot_site_visits do %>
+  <script type="text/javascript">
+    <%= render partial: 'time_visits_graph.js' %>
+  </script>
+<% end %>
+
+<%= content_for :plot_server_performance do %>
+  <script type="text/javascript">
+    <%= render partial: 'time_visits_graph.js' %>
+  </script>
+<% end %>
+
+<%= content_for :plot_site_usage do %>
+  <script type="text/javascript">
+    <%= render partial: 'time_visits_graph.js' %>
+  </script>
+<% end %>
+
+<div id="accordion" role="tablist">
+
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm">
+          <%= render template: 'input_files/get' %>
+        </div>
+        <div class="col-sm">
+          <%= render template: 'timeframes/get' %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+
+    <div class="card-header" role="tab" id="performance-card">
+      <h5 class="mb-0">
+        <a class="collapsed" data-toggle="collapse" href="#performance-disp" aria-expanded="true" aria-controls="performance-disp">
+          Show Site Performance
+        </a>
+      </h5>
+    </div>
+    <div id="performance-disp" class="collapse" role="tabpanel" aria-labelledby="performance-card" data-parent="#accordion">
+      <div class="card-body">
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header" role="tab" id="visits-card">
+      <h5 class="mb-0">
+        <a class="collapsed" data-toggle="collapse" href="#visits-disp" aria-expanded="false" aria-controls="visits-disp">
+          Show Site Visits
+        </a>
+      </h5>
+    </div>
+    <div id="visits-disp" class="collapse" role="tabpanel" aria-labelledby="visits-card" data-parent="#accordion">
+      <div class="card-body">
+        <div id="chartdiv" style="width: 100%; height: 400px;">
+          <%= yield :plot_site_visits %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header" role="tab" id="usage-card">
+      <h5 class="mb-0">
+        <a class="collapsed" data-toggle="collapse" href="#usage-disp" aria-expanded="false" aria-controls="usage-disp">
+          Show Site Usage
+        </a>
+      </h5>
+    </div>
+    <div id="usage-disp" class="collapse" role="tabpanel" aria-labelledby="usage-card" data-parent="#accordion">
+      <div class="card-body">
+      </div>
+    </div>
+  </div>
+
+</div>

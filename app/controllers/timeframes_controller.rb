@@ -2,14 +2,16 @@ class TimeframesController < ApplicationController
 
   include CurrentTimeframe
 
-  before_action :set_timeframe, only: [:create, :update]
+  before_action :current_timeframe, only: [:create, :update]
 
   def create
     @timeframe.update(timeframe_params)
+    redirect_to '/'
   end
 
   def update
     @timeframe.update(timeframe_params)
+    redirect_to '/'
   end
 
   private

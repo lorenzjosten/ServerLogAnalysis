@@ -13,3 +13,13 @@
  */
 
 @import 'bootstrap';
+
+#page-header {
+  border-bottom: 2px solid lightgrey;
+  font-size: 25px !important;
+  font-weight: bold !important;
+}
+
+#page-content {
+  padding-top: 5em;
+}

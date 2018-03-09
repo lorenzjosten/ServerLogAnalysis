@@ -1,5 +1,0 @@
-<%= form_with scope: :timeframe, url: {controller: :analysis, action: :set_timeframe}, method: :put do |form| %>
-  <%= form.datetime_select 't_start', @datetime_start_options %>
-  <%= form.datetime_select 't_end', @datetime_end_options %>
-  <%= form.submit 'Set Timeframe', @datetime_submit_option %>
-<% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180302010713) do
+ActiveRecord::Schema.define(version: 20180305123439) do
 
   create_table "access_data", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -30,6 +30,13 @@ ActiveRecord::Schema.define(version: 20180302010713) do
     t.text "name"
     t.string "content_type"
     t.binary "data", limit: 10485760
+  end
+
+  create_table "timeframes", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "t_start"
+    t.datetime "t_end"
   end
 
 end

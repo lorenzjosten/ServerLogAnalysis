@@ -15,4 +15,5 @@
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require amcharts3
+//= require amcharts3/serial
 //= require_tree .

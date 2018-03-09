@@ -9,7 +9,6 @@ module CurrentInputFile
   end
 
   def current_input_file
-    return unless session[:input_file_id]
     begin
       @input_file = InputFile.find(session[:input_file_id])
     rescue ActiveRecord::RecordNotFound
