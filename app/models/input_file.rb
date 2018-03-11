@@ -1,6 +1,7 @@
 class InputFile < ApplicationRecord
   model_name.instance_variable_set(:@route_key, 'input_file')
 
+  belongs_to :analysis
   has_many :access_data, dependent: :destroy
 
   def uploaded_file=(uploaded_file)
