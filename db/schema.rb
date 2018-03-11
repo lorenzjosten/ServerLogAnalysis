@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180305123439) do
+ActiveRecord::Schema.define(version: 20180310224821) do
 
   create_table "access_data", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -35,8 +35,10 @@ ActiveRecord::Schema.define(version: 20180305123439) do
   create_table "timeframes", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.datetime "t_start"
-    t.datetime "t_end"
+    t.date "start_date", default: "-4712-01-01"
+    t.time "start_time", default: "2000-01-01 00:00:00"
+    t.date "end_date", default: "-4712-01-01"
+    t.time "end_time", default: "2000-01-01 00:00:00"
   end
 
 end

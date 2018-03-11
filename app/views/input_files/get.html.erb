@@ -1,4 +1,11 @@
 <%= form_with model: InputFile.new, html: {multipart: true, class: 'form-horizontal center'} do |form| %>
-  <%= form.file_field 'uploaded_file' %>
-  <%= form.submit 'Upload' %>
+  <div class='input-group'>
+    <div class="custom-file">
+      <label class="custom-file-label" for="customFile">Choose File</label>
+      <input type="file" class="custom-file-input" id="customFile" name="file_field[uploaded_file]">
+    </div>
+    <div class='input-group-append'>
+      <input type="submit" value="Upload" class="btn btn-primary">
+    </div>
+  </div>
 <% end %>

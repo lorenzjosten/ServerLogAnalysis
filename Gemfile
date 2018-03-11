@@ -36,9 +36,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 gem 'autoprefixer-rails'
 gem 'bootstrap'
-#gem 'bootstrap-sass'
+gem 'bootstrap_form', git: "https://github.com/bootstrap-ruby/bootstrap_form.git", branch: "master"
 gem 'rails-assets-amcharts3', source: 'https://rails-assets.org'
-#gem 'rails-assets-bootstrap', source: 'https://rails-assets.org'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -3,10 +3,10 @@ class InputFile < ApplicationRecord
 
   has_many :access_data, dependent: :destroy
 
-  def uploaded_file=(file_field)
-    self.name = File.basename(file_field.original_filename).gsub(/[^\w._-]/,'')
-    self.content_type = file_field.content_type.chomp
-    self.data = file_field.read
+  def uploaded_file=(uploaded_file)
+    self.name = File.basename(uploaded_file.original_filename).gsub(/[^\w._-]/,'')
+    self.content_type = uploaded_file.content_type.chomp
+    self.data = uploaded_file.tempfile.read
   end
 
 end

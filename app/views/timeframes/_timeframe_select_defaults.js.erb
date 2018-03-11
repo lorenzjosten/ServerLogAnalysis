@@ -1,0 +1,11 @@
+$( document ).ready( function(){
+  var start_date = $('.timeframe_options_class').data('startdate');
+  var start_time = $('.timeframe_options_class').data('starttime');
+  var end_date = $('.timeframe_options_class').data('enddate');
+  var end_time = $('.timeframe_options_class').data('endtime');
+
+  $("#start_date").attr("value", start_date);
+  $("#start_time").attr("value", start_time);
+  $("#end_date").attr("value", end_date);
+  $("#end_time").attr("value", end_time);
+})

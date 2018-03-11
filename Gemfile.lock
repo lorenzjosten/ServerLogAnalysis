@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/bootstrap-ruby/bootstrap_form.git
+  revision: ee605d7173a3c216cc738ac04694e6b1ff886efb
+  branch: master
+  specs:
+    bootstrap_form (4.0.0.dev)
+      rails (>= 5.0)
+
 GEM
   remote: https://rubygems.org/
   remote: https://rails-assets.org/
@@ -42,7 +50,7 @@ GEM
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
     arel (8.0.0)
-    autoprefixer-rails (8.0.0)
+    autoprefixer-rails (8.1.0.1)
       execjs
     bindex (0.5.0)
     bootstrap (4.0.0)
@@ -69,7 +77,7 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
     crass (1.0.3)
-    erubi (1.7.0)
+    erubi (1.7.1)
     execjs (2.7.0)
     ffi (1.9.23)
     globalid (0.4.1)
@@ -102,7 +110,7 @@ GEM
       mini_portile2 (~> 2.3.0)
     popper_js (1.12.9)
     public_suffix (3.0.2)
-    puma (3.11.2)
+    puma (3.11.3)
     rack (2.0.4)
     rack-test (0.8.3)
       rack (>= 1.0, < 3)
@@ -131,7 +139,7 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (12.3.0)
-    rb-fsevent (0.10.2)
+    rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
     ruby_dep (1.5.0)
@@ -147,7 +155,7 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
-    selenium-webdriver (3.9.0)
+    selenium-webdriver (3.10.0)
       childprocess (~> 0.5)
       rubyzip (~> 1.2)
     spring (2.0.2)
@@ -190,6 +198,7 @@ PLATFORMS
 DEPENDENCIES
   autoprefixer-rails
   bootstrap
+  bootstrap_form!
   byebug
   capybara (~> 2.13)
   coffee-rails (~> 4.2)

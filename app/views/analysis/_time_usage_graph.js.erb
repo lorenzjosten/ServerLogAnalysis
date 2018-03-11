@@ -3,7 +3,7 @@ var chart;
 AmCharts.ready(function () {
 // SERIAL CHART
 chart = new AmCharts.AmSerialChart();
-chart.dataProvider = $('.graph_data_class').data('sitevisits');
+chart.dataProvider = $('.graph_data_class').data('siteusage');
 chart.categoryField = "hour";
 chart.startDuration = 1;
 
@@ -35,5 +35,5 @@ chart.addChartCursor(chartCursor);
 
 chart.creditsPosition = "top-right";
 
-chart.write("chartdiv");
+chart.write("siteusagechart");
 });

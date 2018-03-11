@@ -15,7 +15,7 @@ class InputFilesController < ApplicationController
   private
 
   def input_file_params
-    params.require(:input_file).permit(:uploaded_file)
+    params.require(:file_field).permit(:uploaded_file)
   end
 
 end

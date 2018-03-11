@@ -1,0 +1,49 @@
+var chart;
+
+AmCharts.ready(function () {
+
+  // SERIAL CHART
+  chart = new AmCharts.AmSerialChart();
+  chart.dataProvider = $('.graph_data_class').data('serverresponse');
+  chart.categoryField = "url";
+  chart.startDuration = 1;
+
+  // AXES
+  // category
+  var categoryAxis = chart.categoryAxis;
+  categoryAxis.labelRotation = 90;
+  categoryAxis.gridPosition = "start";
+  categoryAxis.labelsEnabled = false;
+  categoryAxis.title = "Site URL [hover chart bars]";
+
+  // value
+  var valueAxis = new AmCharts.ValueAxis();
+  valueAxis.title = "Averaged server response time [ms]";
+  chart.addValueAxis(valueAxis);
+
+  // GRAPH
+  var graph = new AmCharts.AmGraph();
+  graph.valueField = "respT";
+  graph.balloonText = "[[category]]: <b>[[value]]</b>";
+  graph.type = "column";
+  graph.lineAlpha = 0;
+  graph.fillAlphas = 0.8;
+  chart.addGraph(graph);
+
+  // CURSOR
+  var chartCursor = new AmCharts.ChartCursor();
+  chartCursor.cursorAlpha = 0;
+  chartCursor.zoomable = false;
+  chartCursor.categoryBalloonEnabled = false;
+  chart.addChartCursor(chartCursor);
+
+  var chartScrollbar = new AmCharts.ChartScrollbar();
+  chartScrollbar.dragIcon = "dragIconRectBig";
+  chartScrollbar.backgoundColor = "#FCD202";
+  chartScrollbar.backgroundAlpha = 1;
+  chart.addChartScrollbar(chartScrollbar);
+
+  chart.creditsPosition = "top-left";
+
+  chart.write("serverperformancechart");
+});

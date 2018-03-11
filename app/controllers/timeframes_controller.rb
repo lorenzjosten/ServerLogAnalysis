@@ -2,12 +2,7 @@ class TimeframesController < ApplicationController
 
   include CurrentTimeframe
 
-  before_action :current_timeframe, only: [:create, :update]
-
-  def create
-    @timeframe.update(timeframe_params)
-    redirect_to '/'
-  end
+  before_action :current_timeframe, only: [:update]
 
   def update
     @timeframe.update(timeframe_params)
@@ -17,7 +12,7 @@ class TimeframesController < ApplicationController
   private
 
   def timeframe_params
-    params.require(:timeframe).permit(:t_start, :t_end)
+    params.require(:timeframe).permit(:start_date, :start_time, :end_date, :end_time)
   end
 
 end
