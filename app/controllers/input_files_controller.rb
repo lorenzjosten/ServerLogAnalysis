@@ -1,15 +1,24 @@
 class InputFilesController < ApplicationController
 
+  include CurrentAnalysis
   include LogFileScanner
-  include CurrentInputFile
 
-  before_action :new_input_file, only: [:create]
+  before_action :current_analysis, only: [:update]
 
   def create
-    @input_file.update(input_file_params)
+    @input_file = @analysis.build_input_file(input_file_params)
     access_data = scan(@input_file.data)
-    @input_file.access_data.build(access_data)
+    @input_file.access_data.create(access_data)
     redirect_to '/' if @input_file.save
+  end
+
+  def update
+    @input_file = @analysis.input_file
+    if @input_file.update(input_file_params)
+      access_data = scan(@input_file.data)
+      @input_file.access_data.create(access_data) if @input_file.access_data.destroy_all
+      redirect_to '/'
+    end
   end
 
   private

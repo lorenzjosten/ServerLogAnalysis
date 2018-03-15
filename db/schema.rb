@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180310224821) do
+ActiveRecord::Schema.define(version: 20180311124456) do
 
   create_table "access_data", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -24,21 +24,30 @@ ActiveRecord::Schema.define(version: 20180310224821) do
     t.index ["input_file_id"], name: "index_access_data_on_input_file_id"
   end
 
+  create_table "analyses", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "input_files", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "name"
     t.string "content_type"
     t.binary "data", limit: 10485760
+    t.integer "analysis_id"
+    t.index ["analysis_id"], name: "index_input_files_on_analysis_id"
   end
 
   create_table "timeframes", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.date "start_date", default: "-4712-01-01"
-    t.time "start_time", default: "2000-01-01 00:00:00"
-    t.date "end_date", default: "-4712-01-01"
-    t.time "end_time", default: "2000-01-01 00:00:00"
+    t.date "start_date"
+    t.time "start_time"
+    t.date "end_date"
+    t.time "end_time"
+    t.integer "analysis_id"
+    t.index ["analysis_id"], name: "index_timeframes_on_analysis_id"
   end
 
 end

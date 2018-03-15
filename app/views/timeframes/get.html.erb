@@ -1,8 +1,12 @@
 <%= content_tag :div, class: "timeframe_options_class", data: {
-  startdate: @start_date,
-  starttime: @start_time,
-  enddate: @end_date,
-  endtime: @end_time } do %>
+  startdate: @plot_data.start_date,
+  enddate: @plot_data.end_date,
+  starttime: @plot_data.start_time,
+  endtime: @plot_data.end_time,
+  mindate: @plot_data.min_date,
+  maxdate: @plot_data.max_date,
+  mintime: (@plot_data.min_time if @plot_data.start_date == @plot_data.end_date),
+  maxtime: (@plot_data.max_time if @plot_data.start_date == @plot_data.end_date) } do %>
 <% end %>
 
 <%= content_for :timeframe_select_defaults do %>
@@ -11,7 +15,7 @@
   </script>
 <% end %>
 
-<%= form_with model: @timeframe, html: {class: 'form-horizontal center'} do |form| %>
+<%= form_with model: @analysis.timeframe, html: {class: 'form-horizontal center'} do |form| %>
   <div class='form-group row'>
     <label for='start_date' class='col col-md-2 col-form-label'>Start Date</label>
     <div class='col col-md-4'>

@@ -1,12 +1,16 @@
 class TimeframesController < ApplicationController
 
-  include CurrentTimeframe
+  include CurrentAnalysis
 
-  before_action :current_timeframe, only: [:update]
+  before_action :current_analysis, only: [:update]
+
+  def create
+    @timeframe = @analysis.build_timeframe(timeframe_params)
+    redirect_to '/' if @timeframe.save
+  end
 
   def update
-    @timeframe.update(timeframe_params)
-    redirect_to '/'
+    redirect_to '/' if @analysis.timeframe.update(timeframe_params)
   end
 
   private

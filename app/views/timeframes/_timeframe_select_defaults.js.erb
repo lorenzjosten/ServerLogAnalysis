@@ -3,9 +3,21 @@ $( document ).ready( function(){
   var start_time = $('.timeframe_options_class').data('starttime');
   var end_date = $('.timeframe_options_class').data('enddate');
   var end_time = $('.timeframe_options_class').data('endtime');
+  var min_date = $('.timeframe_options_class').data('mindate');
+  var max_date = $('.timeframe_options_class').data('maxdate');
+  var min_time = $('.timeframe_options_class').data('mintime');
+  var max_time = $('.timeframe_options_class').data('maxtime');
 
   $("#start_date").attr("value", start_date);
+  $("#start_date").attr("min", min_date);
+  $("#start_date").attr("max", max_date);
   $("#start_time").attr("value", start_time);
+  $("#start_time").attr("min", min_time);
+  $("#start_time").attr("max", max_time);
   $("#end_date").attr("value", end_date);
+  $("#end_date").attr("min", min_date);
+  $("#end_date").attr("max", max_date);
   $("#end_time").attr("value", end_time);
+  $("#end_time").attr("min", min_time);
+  $("#end_time").attr("max", max_time);
 })

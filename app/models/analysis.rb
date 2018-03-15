@@ -1,21 +1,22 @@
 class Analysis < ApplicationRecord
   model_name.instance_variable_set(:@route_key, 'analysis')
 
-  has_one :input_file, dependent: destroy
-  has_one :timeframe, dependent: destroy
-  has_many :access_data, through :input_file
+  has_one :input_file, dependent: :destroy
+  has_one :timeframe, dependent: :destroy
 
-  before_create :create_default_input_file, :create_default_timeframe
+  validates_presence_of :input_file
+  validates_presence_of :timeframe
+  before_validation :build_default_input_file, :build_default_timeframe
 
   private
 
-  def create_default_input_file
-    create_input_file
+  def build_default_input_file
+    build_input_file
     return true
   end
 
-  def create_default_timeframe
-    create_timeframe
+  def build_default_timeframe
+    build_timeframe
     return true
   end
 end

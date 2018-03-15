@@ -3,8 +3,8 @@ var chart;
 AmCharts.ready(function () {
 
   chart = new AmCharts.AmSerialChart();
-  chart.addTitle('Server performance - response time');
-  chart.dataProvider = $('.graph_data_class').data('serverresponse');
+  chart.addTitle('Visits per blog');
+  chart.dataProvider = $('.graph_data_class').data('blogvisits');
   chart.categoryField = "url";
   chart.startDuration = 1;
 
@@ -12,19 +12,19 @@ AmCharts.ready(function () {
   categoryAxis.labelRotation = 90;
   categoryAxis.gridPosition = "start";
   categoryAxis.labelsEnabled = false;
-  categoryAxis.title = "Site URL [hover chart bars]";
-
-  var valueAxis = new AmCharts.ValueAxis();
-  valueAxis.title = "Averaged server response time [ms]";
-  chart.addValueAxis(valueAxis);
+  categoryAxis.title = "Blog URL [hover chart bars]"
 
   var graph = new AmCharts.AmGraph();
-  graph.valueField = "respT";
+  graph.valueField = "visits";
   graph.balloonText = "[[category]]: <b>[[value]]</b>";
   graph.type = "column";
   graph.lineAlpha = 0;
   graph.fillAlphas = 0.8;
   chart.addGraph(graph);
+
+  var valueAxis = new AmCharts.ValueAxis();
+  valueAxis.title = "Total Blog visits";
+  chart.addValueAxis(valueAxis);
 
   var chartCursor = new AmCharts.ChartCursor();
   chartCursor.cursorAlpha = 0;
@@ -38,7 +38,7 @@ AmCharts.ready(function () {
   chartScrollbar.backgroundAlpha = 1;
   chart.addChartScrollbar(chartScrollbar);
 
-  chart.creditsPosition = "top-left";
+  chart.creditsPosition = "top-right";
 
-  chart.write("serverperformancechart");
+  chart.write("blogvisitschart");
 });
