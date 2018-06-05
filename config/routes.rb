@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resource :input_file, shallow: true do
-    resources :access_data
+  resources :analyses, shallow: true, only: [:new, :create, :show] do
+    resource :timeframe, only: [:create, :show, :update]
+    resource :input_file, only: [:create]
   end
-
-  get 'access_data/index'
-  root 'access_data#index'
+  resources :input_files, only: [:create] do
+    resource :scanner, only: [:create, :show]
+    resources :access_data, only: [:index]
+  end
+  root 'analyses#show'
 end

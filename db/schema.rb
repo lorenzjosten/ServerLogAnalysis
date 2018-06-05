@@ -10,17 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180311124456) do
+ActiveRecord::Schema.define(version: 20180605010818) do
 
   create_table "access_data", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "input_file_id"
     t.string "request"
     t.string "url"
     t.datetime "access_time"
     t.string "stat"
     t.integer "respT"
+    t.integer "input_file_id"
     t.index ["input_file_id"], name: "index_access_data_on_input_file_id"
   end
 
@@ -30,22 +30,30 @@ ActiveRecord::Schema.define(version: 20180311124456) do
   end
 
   create_table "input_files", force: :cascade do |t|
+    t.binary "data"
+    t.string "name"
+    t.string "content_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "name"
-    t.string "content_type"
-    t.binary "data", limit: 10485760
     t.integer "analysis_id"
     t.index ["analysis_id"], name: "index_input_files_on_analysis_id"
   end
 
-  create_table "timeframes", force: :cascade do |t|
+  create_table "notifications", force: :cascade do |t|
+    t.text "notification"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.date "start_date"
-    t.time "start_time"
-    t.date "end_date"
-    t.time "end_time"
+  end
+
+  create_table "scanners", force: :cascade do |t|
+    t.integer "input_file_id"
+    t.integer "progress", default: 0
+    t.index ["input_file_id"], name: "index_scanners_on_input_file_id"
+  end
+
+  create_table "timeframes", force: :cascade do |t|
+    t.datetime "start"
+    t.date "end"
     t.integer "analysis_id"
     t.index ["analysis_id"], name: "index_timeframes_on_analysis_id"
   end

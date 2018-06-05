@@ -1,11 +1,3 @@
-GIT
-  remote: https://github.com/bootstrap-ruby/bootstrap_form.git
-  revision: ee605d7173a3c216cc738ac04694e6b1ff886efb
-  branch: master
-  specs:
-    bootstrap_form (4.0.0.dev)
-      rails (>= 5.0)
-
 GEM
   remote: https://rubygems.org/
   remote: https://rails-assets.org/
@@ -68,6 +60,7 @@ GEM
       xpath (>= 2.0, < 4.0)
     childprocess (0.8.0)
       ffi (~> 1.0, >= 1.0.11)
+    coderay (1.1.2)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0)
@@ -109,6 +102,9 @@ GEM
     nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
     popper_js (1.12.9)
+    pry (0.11.3)
+      coderay (~> 1.1.0)
+      method_source (~> 0.9.0)
     public_suffix (3.0.2)
     puma (3.11.3)
     rack (2.0.4)
@@ -198,13 +194,13 @@ PLATFORMS
 DEPENDENCIES
   autoprefixer-rails
   bootstrap
-  bootstrap_form!
   byebug
   capybara (~> 2.13)
   coffee-rails (~> 4.2)
   jbuilder (~> 2.5)
   jquery-rails
   listen (>= 3.0.5, < 3.2)
+  pry
   puma (~> 3.7)
   rails (~> 5.1.5)
   rails-assets-amcharts3!
@@ -219,4 +215,4 @@ DEPENDENCIES
   web-console (>= 3.3.0)
 
 BUNDLED WITH
-   1.16.0
+   1.16.2
