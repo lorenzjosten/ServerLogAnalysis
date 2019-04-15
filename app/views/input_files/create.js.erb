@@ -1,7 +1,0 @@
-file_form.set_file_name('<%= j(file_name) %>');
-progress_bar.set_progress(<%= @input_file.scanner.read_attribute(:progress) %>);
-data_poller.url = '<%= input_file_access_data_path(@input_file) %>';
-timeframe_poller.url = '<%= analysis_timeframe_path(@analysis) %>';
-progress_poller.url = '<%= input_file_scanner_path(@input_file) %>';
-progress_poller.poll();
-data_poller.poll();

@@ -1,11 +1,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+empty_text_file:
   data: 
-  name: MyString
-  content_type: MyString
+  name: empty_file
+  content_type: text
+  analysis: valid
 
-two:
-  data: 
-  name: MyString
-  content_type: MyString
+text_file_without_name:
+  data: random_data
+  name: 
+  content_type: text
+  analysis: valid
+
+not_a_text_file:
+  data: random_data
+  name: not_a_text_file
+  content_type: random_type
+  analysis: valid

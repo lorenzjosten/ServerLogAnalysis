@@ -17,5 +17,11 @@
 //= require turbolinks
 //= require amcharts3
 //= require amcharts3/serial
+//= require pusher
 //= require_tree ./amcharts
 //= require_tree .
+
+var pusher = new Pusher('826205cb935732178cef', {
+  cluster: 'eu',
+  encrypted: true
+});

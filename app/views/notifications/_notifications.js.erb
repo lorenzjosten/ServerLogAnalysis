@@ -1,0 +1,3 @@
+<% messages.each do |msg| %>
+  $('#notification-div').append('<%= j render partial: 'notifications/show', locals: {message: msg} %>');
+<% end %>

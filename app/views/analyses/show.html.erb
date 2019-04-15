@@ -1,32 +1,12 @@
 <div id="accordion" role="tablist">
+
   <div class="card">
     <div class="card-body">
-      <div class="row align-items-center">
-        <div id="select-file-div" class="col col-md-12 align-self-center">
-          <%= render partial: 'input_files/form' %>
-        </div>
-      </div>
-      <div class="container-fluid" id="timeframe-div">
-        <div class="row align-items-center">
-          <div id="select-datetime-div" class="col col-md-12 align-self-center">
-            <%= render partial: 'timeframes/form' %>
-          </div>
-        </div>
-      </div>
-      <div class="row align-items-center">
-        <div id="scan-progress-div" class="col col-md-12 align-self-center">
-          <%= render partial: 'scanners/show' %>
-        </div>
-      </div>
-      <div class="row align-items-center">
-        <div id="error-div" class="col col-md-12 align-self-center" data-msg="Something went wrong">
-          <%= render partial: 'notifications/error/show' %>
-        </div>
-      </div>
-      <div class="row align-items-center">
-        <div id="warning-div" class="col col-md-12 align-self-center" data-msg="Something went wrong"></div>
-          <%= render partial: 'notifications/warning/show' %>
-        </div>
+      <%= render partial: 'input_files/form' %>
+      <%= render partial: 'analyses/progress' %>
+      <%= render partial: 'timeframes/form' %>
+      <div class="row">
+        <div id="notification-div" class="col col-md-12"></div>
       </div>
     </div>
   </div>
@@ -34,14 +14,18 @@
   <div class="card">
     <div class="card-header" role="tab" id="performance-card">
       <h5 class="mb-0">
-        <button id="render-server-performance" class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#show-server-performance" aria-expanded="false" aria-controls="show-server-performance"  %>
+        <button id="render-server-performance" class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#show-server-performance" aria-expanded="false" aria-controls="show-server-performance">
           Show Server Performance
+        </button>
+        <button class="refresh-graph btn btn-primary">
+          Refresh
         </button>
       </h5>
     </div>
-    <div id="show-server-performance" class="show_plot collapse" role="tabpanel" aria-labelledby="performance-card" data-parent="#accordion">
+    <div id="show-server-performance" class="show-graph collapse" role="tabpanel" aria-labelledby="performance-card" data-parent="#accordion">
       <div class="card-body">
-      <div id="server-performance-chart" class="plot" style="width: 100%; height: 400px;"></div>
+        <div id="server-performance-chart" class="graph" style="width: 100%; height: 400px;">
+        </div>
       </div>
     </div>
   </div>
@@ -49,15 +33,20 @@
   <div class="card">
     <div class="card-header" role="tab" id="visits-card">
       <h5 class="mb-0">
-        <button id="render-site-visits" class="btn btn-link collapsed " type="button" data-toggle="collapse" data-target="#show-site-visits" aria-expanded="false" aria-controls="show-site-visits"  %>
+        <button id="render-site-visits" class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#show-site-visits" aria-expanded="false" aria-controls="show-site-visits">
           Show Site Visits
+        </button>
+        <button class="refresh-graph btn btn-primary">
+          Refresh
         </button>
       </h5>
     </div>
-    <div id="show-site-visits" class="show_plot collapse" role="tabpanel" aria-labelledby="visits-card" data-parent="#accordion">
+    <div id="show-site-visits" class="show-graph collapse" role="tabpanel" aria-labelledby="visits-card" data-parent="#accordion">
       <div class="card-body">
-        <div id="url-visits-chart" class="plot" style="width: 100%; height: 400px;"></div>
-        <div id="blog-visits-chart" class="plot" style="width: 100%; height: 400px;"></div>
+        <div id="url-visits-chart" class="graph" style="width: 100%; height: 400px;">
+        </div>
+        <div id="blog-visits-chart" class="graph" style="width: 100%; height: 400px;">
+        </div>
       </div>
     </div>
   </div>
@@ -65,15 +54,20 @@
   <div class="card">
     <div class="card-header" role="tab" id="usage-card">
       <h5 class="mb-0">
-        <button id="render-site-usage" class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#show-site-usage" aria-expanded="false" aria-controls="show-site-usage"  %>
+        <button id="render-site-usage" class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#show-site-usage" aria-expanded="false" aria-controls="show-site-usage">
           Show Site Usage
+        </button>
+        <button class="refresh-graph btn btn-primary">
+          Refresh
         </button>
       </h5>
     </div>
-    <div id="show-site-usage" class="show_plot collapse" role="tabpanel" aria-labelledby="usage-card" data-parent="#accordion">
+    <div id="show-site-usage" class="show-graph collapse" role="tabpanel" aria-labelledby="usage-card" data-parent="#accordion">
       <div class="card-body">
-        <div id="site-usage-chart" class="plot" style="width: 100%; height: 400px;"></div>
+        <div id="site-usage-chart" class="graph" style="width: 100%; height: 400px;">
+        </div>
       </div>
     </div>
   </div>
+
 </div>

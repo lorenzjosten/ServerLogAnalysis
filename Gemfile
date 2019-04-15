@@ -37,7 +37,10 @@ gem 'jquery-rails'
 gem 'autoprefixer-rails'
 gem 'bootstrap'
 gem 'rails-assets-amcharts3', source: 'https://rails-assets.org'
-gem 'pry'
+gem 'sidekiq'
+gem 'sidekiq-status'
+gem 'pusher'
+gem 'rails-assets-pusher', source: 'https://rails-assets.org'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -45,6 +48,7 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+  gem 'chromedriver-helper'
 end
 
 group :development do

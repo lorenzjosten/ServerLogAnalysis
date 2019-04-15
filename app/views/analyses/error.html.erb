@@ -1,9 +1,0 @@
-<div id="analysis-errors">
-  <h2><%= pluralize(@analysis.errors.count, "error") %> errors occured: Service not available<h2>
-    <ul>
-      <% @analysis.errors.each do |e| %>
-        <li><%= e.message %></li>
-      <%end%>
-    </ul>
-</div>
-<%= link_to "New analysis", root_path %>

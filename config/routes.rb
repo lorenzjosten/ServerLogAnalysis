@@ -1,12 +1,15 @@
+require 'sidekiq/web'
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :analyses, shallow: true, only: [:new, :create, :show] do
-    resource :timeframe, only: [:create, :show, :update]
-    resource :input_file, only: [:create]
+  mount Sidekiq::Web, at: '/sidekiq'
+
+  concern :error_prone do
+    resources :errors, only: [:index]
+    resources :notifications, only: [:index]
   end
-  resources :input_files, only: [:create] do
-    resource :scanner, only: [:create, :show]
-    resources :access_data, only: [:index]
-  end
+
+  resources :analyses, only: [:show]
+  resources :input_files, only: [:create]
+
   root 'analyses#show'
 end

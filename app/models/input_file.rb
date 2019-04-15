@@ -1,12 +1,10 @@
 class InputFile < ApplicationRecord
-  has_one :scanner, dependent: :destroy
-  has_many :access_data, dependent: :destroy
   belongs_to :analysis
 
-  validates_presence_of(:data, :name, :content_type)
   validates_format_of :content_type, with: /\Atext/, message: "Please select a text-file"
-  validates_associated :scanner, :access_data
-  validate :data_readable
+  validates_size_of :data, allow_blank: false, message: "The file you selected is empty"
+  validates_size_of :data, maximum: 20.megabytes, message: "The file you selected is too big"
+  validates_presence_of :name, allow_blank: false
 
   def uploaded_file=(file_field)
     self.name = get_name(file_field.original_filename)
@@ -16,11 +14,8 @@ class InputFile < ApplicationRecord
 
   private
 
-  def data_readable
-    errors.add(:data, "File data not readable") unless data.respond_to?(:read)
-  end
-
   def get_name(file_name)
     File.basename(file_name).gsub(/[^\w._-]/, '')
   end
+
 end
